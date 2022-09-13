@@ -1,20 +1,19 @@
-#include "main.h"
 
 /**
  * main - Prints _putchar
  *
  * Return: Always 0 (Success)
  */
-
-in _putchar(char c)
+int _putchar (void)
 {
-	char alp[] = "_putchar";
-
-	for (c = 0; c < strlen(alp); c++)
-	{
-		putchar(alp[c]);
-	}
-	putchar("\n");
-
+	_putchar('_');
+	_putchar('p');
+	_putchar('u');
+	_putchar('t');
+	_putchar('c');
+	_putchar('h');
+	_putchar('a');
+	_putchar('r');
+	_putchar('\n');
 	return (0);
 }
