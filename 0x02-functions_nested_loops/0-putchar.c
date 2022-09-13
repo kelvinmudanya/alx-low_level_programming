@@ -8,7 +8,7 @@
 
 in _putchar(char c)
 {
-	char[] alp = "_putchar";
+	char alp[] = "_putchar";
 
 	for (c = 0; c < strlen(alp); c++)
 	{
