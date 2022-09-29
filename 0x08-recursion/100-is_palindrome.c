@@ -1,20 +1,47 @@
 #include "main.h"
 
 /**
- * wildcmp - compares two strings.
- * @s1: string 1.
- * @s2: string 2. It can contains a * as a special character.
- * Return: 1 if are identical, 0 if not.
+ * palind2 - obtains length of a
+ * @a: string
+ * @l: integer to count length
+ *
+ * Return: On success 1.
+ * On error, -1 is returned, and errno is set appropriately.
  */
-int wildcmp(char *s1, char *s2)
+int palind2(char *a, int l)
 {
-	if (*s2 == '*' && *(s2 + 1) != '\0' && *s1 == '\0')
+	if (*a == 0)
+		return (l - 1);
+	return (palind2(a + 1, l + 1));
+}
+/**
+ * palind3 - compares string vs string reverse
+ * @a: string
+ * @l: length
+ *
+ * Return: On success 1.
+ * On error, -1 is returned, and errno is set appropriately.
+ */
+
+int palind3(char *a, int l)
+{
+	if (*a != *(a + l))
 		return (0);
-	if (*s1 == '\0' && *s2 == '\0')
+	else if (*a == 0)
 		return (1);
-	if (*s1 == *s2)
-		return (wildcmp(s1 + 1, s2 + 1));
-	if (*s2 == '*')
-		return (wildcmp(s1, s2 + 1) || wildcmp(s1 + 1, s2));
-	return (0);
+	return (palind3(a + 1, l - 2));
+}
+/**
+ * is_palindrome - checks if a string is a palindrome
+ * @s: string to evaluate
+ *
+ * Return: On success 1.
+ * On error, -1 is returned, and errno is set appropriately.
+ */
+int is_palindrome(char *s)
+{
+	int l;
+
+	l = palind2(s, 0);
+	return (palind3(s, l));
 }
